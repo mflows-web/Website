@@ -6,6 +6,7 @@ export default function Hero() {
   const bgRef = useRef<HTMLDivElement>(null);
   const [y, setY] = useState(0);
   const [vh, setVh] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     let raf = 0;
@@ -18,12 +19,16 @@ export default function Hero() {
     };
     // initialize viewport height
     setVh(window.innerHeight);
+    setIsMobile(window.innerWidth < 640);
     const onResize = () => setVh(window.innerHeight);
+    const onResizeMobile = () => setIsMobile(window.innerWidth < 640);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
+    window.addEventListener("resize", onResizeMobile);
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
+      window.removeEventListener("resize", onResizeMobile);
       if (raf) cancelAnimationFrame(raf);
     };
   }, []);
@@ -37,15 +42,15 @@ export default function Hero() {
           className="absolute inset-0 will-change-transform"
           style={{
             // heavier parallax
-            transform: `translateY(${y * -0.25}px) scale(${1.08 - Math.min(y / 1600, 0.08)})`,
-            // fade out more aggressively (~60% of viewport height)
-            opacity: Math.max(0, 1 - (vh ? y / (vh * 0.6) : 0)),
+            transform: isMobile ? "none" : `translateY(${y * -0.25}px) scale(${1.08 - Math.min(y / 1600, 0.08)})`,
+            // on mobile, keep it fully visible; desktop fades at ~60% vh
+            opacity: isMobile ? 1 : Math.max(0, 1 - (vh ? y / (vh * 0.6) : 0)),
             backgroundImage: "url('/logo.png?v=2')",
             backgroundColor: '#000',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundSize: isMobile ? 'contain' : 'cover',
+            backgroundPosition: isMobile ? 'center top' : 'center',
             backgroundRepeat: 'no-repeat',
-            filter: 'brightness(1.05) contrast(0.95) saturate(0.9) blur(0.4px)',
+            filter: isMobile ? 'none' : 'brightness(1.05) contrast(0.95) saturate(0.9) blur(0.4px)',
           }}
         />
 

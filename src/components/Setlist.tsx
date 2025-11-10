@@ -34,13 +34,13 @@ export default function Setlist() {
         <ul className="space-y-2 text-zinc-300">
           {songs.map((s, i) => (
             <li key={s} className="flex">
-              <div className={`${i % 2 === 0 ? "justify-start text-left" : "justify-end text-right"} w-full flex`}>
-                <span className="inline-block">{s}</span>
+              <div className={`w-full flex justify-center text-center ${i % 2 === 0 ? "sm:justify-start sm:text-left" : "sm:justify-end sm:text-right"}`}>
+                <span className="inline-block max-w-[28ch] sm:max-w-none">{s}</span>
               </div>
             </li>
           ))}
         </ul>
-        <p className="mt-6 text-center text-sm text-zinc-400">Other songs available upon requests</p>
+        <p className="mt-6 text-center text-sm text-zinc-400">Other songs available upon request</p>
       </div>
     </section>
   );
