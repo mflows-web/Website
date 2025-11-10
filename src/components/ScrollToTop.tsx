@@ -16,6 +16,14 @@ export default function ScrollToTop() {
 
   const handleClick = () => {
     try {
+      const isMobile = window.innerWidth < 640;
+      if (isMobile) {
+        const intro = document.getElementById("intro");
+        if (intro) {
+          intro.scrollIntoView({ behavior: "smooth", block: "start" });
+          return;
+        }
+      }
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch {
       window.scrollTo(0, 0);
