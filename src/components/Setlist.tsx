@@ -32,15 +32,34 @@ export default function Setlist() {
         <h2 className="text-2xl font-semibold tracking-tight">Our usual setlist</h2>
       </div>
       <div className="mx-auto max-w-4xl">
-        <ul className="space-y-2 text-zinc-300">
-          {songs.map((s, i) => (
+        {/* Mobile: stacked, centered */}
+        <ul className="sm:hidden space-y-2 text-zinc-300">
+          {songs.map((s) => (
             <li key={s} className="flex">
-              <div className={`w-full flex justify-center text-center ${i % 2 === 0 ? "sm:justify-start sm:text-left" : "sm:justify-end sm:text-right"}`}>
-                <span className="inline-block max-w-[28ch] sm:max-w-none">{s}</span>
+              <div className="w-full flex justify-center text-center">
+                <span className="inline-block max-w-[28ch]">{s}</span>
               </div>
             </li>
           ))}
         </ul>
+
+        {/* Desktop/Tablet: two columns, left/right per row */}
+        <div className="hidden sm:grid grid-cols-2 gap-y-2 text-zinc-300">
+          {Array.from({ length: Math.ceil(songs.length / 2) }).map((_, rowIdx) => {
+            const left = songs[rowIdx * 2];
+            const right = songs[rowIdx * 2 + 1];
+            return (
+              <>
+                <div key={`left-${left}`} className="flex justify-start text-left">
+                  <span className="inline-block">{left}</span>
+                </div>
+                <div key={`right-${right || rowIdx}-cell`} className="flex justify-end text-right">
+                  {right ? <span className="inline-block">{right}</span> : <span className="inline-block" />}
+                </div>
+              </>
+            );
+          })}
+        </div>
         <p className="mt-6 text-center text-sm text-zinc-400">Other songs available upon request</p>
       </div>
     </section>

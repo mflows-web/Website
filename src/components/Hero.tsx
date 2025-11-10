@@ -108,7 +108,7 @@ export default function Hero() {
                   </a>
                   <a
                     href="#videos"
-                    className="inline-flex items-center rounded-md bg-zinc-900 text-white px-4 py-2 text-sm font-medium hover:bg-zinc-800 border border-zinc-800"
+                    className="inline-flex items-center rounded-md border border-zinc-700 px-4 py-2 text-sm font-medium hover:bg-zinc-900"
                   >
                     Performance videos
                   </a>
