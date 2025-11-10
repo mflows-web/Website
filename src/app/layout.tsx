@@ -41,10 +41,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-  ],
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
@@ -55,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${montserrat.variable} ${bebas.variable} antialiased bg-white text-zinc-900 dark:bg-black dark:text-zinc-50`}
+        className={`${montserrat.variable} ${bebas.variable} antialiased bg-black text-zinc-50`}
       >
         {/* Subtle alternative accents: faint grain and soft vignette */}
         <div className="pointer-events-none fixed inset-0 -z-10">
