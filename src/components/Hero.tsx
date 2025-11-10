@@ -70,8 +70,8 @@ export default function Hero() {
         {/* Accents removed from hero to avoid clashing with background */}
 
         {/* Content */}
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 min-h-[80vh] sm:min-h-screen flex items-center sm:items-end">
-          <div className="flex w-full flex-col items-center text-center pb-2 sm:pb-4 md:pb-6">
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 min-h-[70vh] sm:min-h-screen flex items-end">
+          <div className="flex w-full flex-col items-center text-center pb-0 sm:pb-4 md:pb-6">
             <div className="mx-auto max-w-3xl rounded-xl bg-black/40 px-5 py-4 sm:px-6 sm:py-5 backdrop-blur-sm supports-[backdrop-filter]:backdrop-blur-sm border border-white/5 shadow-[0_10px_30px_rgba(0,0,0,0.45)]">
               <p className="text-zinc-100 text-base md:text-lg">
                 North-West England’s premier 90s Britpop band. From Oasis to Travis and Paul Weller to Space, we deliver a night of hit anthems for weddings, events and venues.
