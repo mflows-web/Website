@@ -11,6 +11,7 @@ export default function Setlist() {
     "Oasis - Half The World Away",
     "The Coral - Dreaming Of You",
     "Space - Neighbourhood",
+    "R.E.M - Losing My Religion",
     "Shed Seven - Going For Gold",
     "Oasis - She's Electric",
     "Paul Weller - Changing Man",
