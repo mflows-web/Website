@@ -39,23 +39,15 @@ export default function Hero() {
       {isMobile ? (
         <>
           <div className="relative overflow-hidden">
-            <img
-              src="/logo.png?v=2"
-              alt="The Mersey Flows logo"
-              className="mx-auto block w-full max-w-[520px] h-auto select-none"
-              draggable={false}
-            />
-            <div className="absolute inset-x-0 bottom-2 flex justify-center">
-              <a
-                href="#intro"
-                aria-label="Scroll to intro"
-                className="inline-flex items-center justify-center rounded-full border border-white/70 bg-black/40 backdrop-blur-sm px-4 py-2 text-white text-sm"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-                  <path d="M12 19l7-7M12 19l-7-7M12 19V5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </a>
-            </div>
+            <picture>
+              <source srcSet="/logo.webp" type="image/webp" />
+              <img
+                src="/logo.png?v=2"
+                alt="The Mersey Flows logo"
+                className="mx-auto block w-full max-w-[520px] h-auto select-none"
+                draggable={false}
+              />
+            </picture>
           </div>
           {/* Divider directly under mobile hero */}
           <div className="h-2 w-full bg-gradient-to-r from-white via-[#cf142b] to-white shadow-[0_0_10px_rgba(207,20,43,0.35)]" />
@@ -70,7 +62,7 @@ export default function Hero() {
               // heavier parallax
               transform: `translateY(${y * -0.25}px) scale(${1.08 - Math.min(y / 1600, 0.08)})`,
               opacity: Math.max(0, 1 - (vh ? y / (vh * 0.6) : 0)),
-              backgroundImage: "url('/logo.png?v=2')",
+              backgroundImage: "image-set(url('/logo.webp') type('image/webp'), url('/logo.png?v=2') type('image/png'))",
               backgroundColor: '#000',
               backgroundSize: 'cover',
               backgroundPosition: 'center',

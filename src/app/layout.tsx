@@ -16,15 +16,62 @@ const bebas = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "The Mersey Flows | 90s Britpop Band",
+  applicationName: "The Mersey Flows",
+  title: {
+    default: "The Mersey Flows | Britpop 90s Band for Hire in Runcorn, Cheshire",
+    template: "%s | The Mersey Flows",
+  },
   description:
-    "The Mersey Flows are a North-West England band playing 90s Britpop classics for weddings, events, and venues.",
-  metadataBase: new URL("https://example.com"),
-  icons: { icon: "/favicon.ico" },
+    "Book The Mersey Flows — a Britpop 90s live band from Runcorn, Cheshire (North‑West England). Oasis, Blur, Pulp, Ocean Colour Scene and more for weddings, corporate events, private parties and venues.",
+  keywords: [
+    "Runcorn band",
+    "Cheshire live band",
+    "North West England band",
+    "Merseyside band",
+    "wedding band",
+    "corporate event band",
+    "party band",
+    "britpop band",
+    "90s band",
+    "Oasis",
+    "Blur",
+    "Pulp",
+    "Ocean Colour Scene",
+    "Shed Seven",
+    "Paul Weller",
+    "cover band",
+    "live music Runcorn",
+    "live music Cheshire",
+    "band for hire",
+    "book a band",
+  ],
+  metadataBase: new URL("https://merseyflowsband.com"),
+  alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/icon-16.png?v=1", sizes: "16x16", type: "image/png" },
+      { url: "/icon-32.png?v=1", sizes: "32x32", type: "image/png" },
+      { url: "/icon-48.png?v=1", sizes: "48x48", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png?v=1", sizes: "180x180" }],
+    other: [{ rel: "mask-icon", url: "/favicon.svg?v=3", color: "#00247d" }],
+    shortcut: "/icon-32.png?v=1",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
+  },
   openGraph: {
-    title: "The Mersey Flows | 90s Britpop Band",
+    title: "The Mersey Flows | Britpop 90s Band for Hire in Runcorn, Cheshire",
     description:
-      "North-West England’s premier 90s Britpop band for weddings, corporate events, and venues.",
+      "Book a Britpop 90s live band for weddings, corporate events and parties in Cheshire, Merseyside and the North‑West.",
     url: "/",
     siteName: "The Mersey Flows",
     images: [{ url: "/logo.png" }],
@@ -33,9 +80,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Mersey Flows | 90s Britpop Band",
+    title: "The Mersey Flows | Britpop 90s Band for Hire",
     description:
-      "North-West England’s premier 90s Britpop band for weddings, corporate events, and venues.",
+      "Britpop 90s live band from Runcorn, Cheshire — Oasis, Blur, Pulp and more for weddings, events and venues.",
     images: ["/logo.png"],
   },
 };
@@ -49,11 +96,57 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // JSON-LD structured data for a local music group
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    name: "The Mersey Flows",
+    alternateName: ["The Mersey Flows Band"],
+    genre: ["Britpop", "90s", "Rock", "Pop"],
+    areaServed: [
+      "Runcorn",
+      "Cheshire",
+      "North West England",
+      "Merseyside",
+      "Liverpool",
+      "Warrington",
+      "Chester",
+      "UK",
+    ],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Runcorn",
+      addressRegion: "Cheshire",
+      addressCountry: "GB",
+    },
+    email: "themerseyflows@gmail.com",
+    telephone: "+44 7454 713523",
+    sameAs: [
+      "https://www.facebook.com/TheMerseyFlows/",
+      "https://www.instagram.com/themerseyflowsband/",
+    ],
+    priceRange: "££",
+    makesOffer: [
+      {
+        "@type": "Offer",
+        availability: "https://schema.org/InStock",
+        itemOffered: {
+          "@type": "Service",
+          name: "Live Britpop Band for Events",
+        },
+      },
+    ],
+  } as const;
   return (
     <html lang="en" className="dark">
       <body
         className={`${montserrat.variable} ${bebas.variable} antialiased bg-black text-zinc-50`}
       >
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {/* Subtle alternative accents: faint grain and soft vignette */}
         <div className="pointer-events-none fixed inset-0 -z-10">
           {/* Subtle accent light blobs (reintroduced) */}
