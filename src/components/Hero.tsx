@@ -7,7 +7,6 @@ import { DesktopHero } from "./Hero/DesktopHero";
 import { HeroDivider } from "./Hero/HeroDivider";
 import { HeroErrorBoundary, SimplifiedHero } from "./Hero/ErrorBoundary";
 import { AccessibilityWrapper } from "./Hero/AccessibilityComponents";
-import { OptimizedMobileHero, OptimizedHeroBackground } from "./Hero/OptimizedImage";
 
 export default function Hero() {
   const { isMobile, viewportHeight } = useResponsive(HERO_CONFIG.MOBILE_BREAKPOINT);
@@ -20,7 +19,7 @@ export default function Hero() {
         <section className="relative" aria-label="The Mersey Flows hero">
           {isMobile ? (
             <>
-              <OptimizedMobileHero />
+              <MobileHero />
               <HeroDivider />
             </>
           ) : (
