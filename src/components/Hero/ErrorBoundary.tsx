@@ -26,8 +26,9 @@ export class HeroErrorBoundary extends Component<Props, State> {
     console.error('Hero section error:', error, errorInfo);
     
     // In production, you might want to send this to an error reporting service
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'exception', {
+    // Note: gtag may not be available, so we check for it first
+    if (typeof window !== 'undefined' && 'gtag' in window) {
+      (window as any).gtag('event', 'exception', {
         description: error.message,
         fatal: false
       });
