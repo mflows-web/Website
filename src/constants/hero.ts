@@ -39,6 +39,7 @@ export const HERO_CONFIG = {
     desktop: { width: 1200, height: 675, quality: 85 },
     large: { width: 1920, height: 1080, quality: 90 }
   },
+  LOGO_MAX_WIDTH: 320, // Fallback for legacy components
   LOGO_VERSION: 'v=2',
   IMAGE_TRANSITION_DURATION: 'duration-300',
   
