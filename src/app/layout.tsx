@@ -22,31 +22,24 @@ export const metadata: Metadata = {
     template: "%s | The Mersey Flows",
   },
   description:
-    "Book The Mersey Flows — a Britpop 90s live band from Runcorn, Cheshire (North‑West England). Oasis, Blur, Pulp, Ocean Colour Scene and more for weddings, corporate events, private parties and venues.",
+    "Book The Mersey Flows — a Britpop 90s live band from Runcorn, Cheshire. Available for weddings, corporate events, and parties. Playing Oasis, Blur, Pulp, Ocean Colour Scene and more.",
   keywords: [
-    "Runcorn band",
-    "Cheshire live band",
-    "North West England band",
-    "Merseyside band",
-    "wedding band",
-    "corporate event band",
-    "party band",
-    "britpop band",
-    "90s band",
-    "Oasis",
-    "Blur",
-    "Pulp",
-    "Ocean Colour Scene",
-    "Shed Seven",
-    "Paul Weller",
-    "cover band",
-    "live music Runcorn",
-    "live music Cheshire",
-    "band for hire",
-    "book a band",
+    "britpop band", "90s band", "cover band", "live band", "band for hire",
+    "Runcorn", "Cheshire", "Merseyside", "Liverpool", "North West England",
+    "wedding band", "corporate event band", "party band", "function band",
+    "britpop", "90s music", "Oasis tribute", "Blur tribute", "Pulp tribute",
+    "live music", "entertainment", "book band", "hire band", "event music"
   ],
+  authors: [{ name: "The Mersey Flows" }],
+  creator: "The Mersey Flows",
+  publisher: "The Mersey Flows",
   metadataBase: new URL("https://merseyflowsband.com"),
-  alternates: { canonical: "/" },
+  alternates: { 
+    canonical: "/",
+    languages: {
+      'en-GB': '/en-GB',
+    },
+  },
   icons: {
     icon: [
       { url: "/icon-16.png?v=1", sizes: "16x16", type: "image/png" },
@@ -71,10 +64,17 @@ export const metadata: Metadata = {
   openGraph: {
     title: "The Mersey Flows | Britpop 90s Band for Hire in Runcorn, Cheshire",
     description:
-      "Book a Britpop 90s live band for weddings, corporate events and parties in Cheshire, Merseyside and the North‑West.",
+      "A Britpop 90s live band from Runcorn, Cheshire. Available for weddings, corporate events, and parties.",
     url: "/",
     siteName: "The Mersey Flows",
-    images: [{ url: "/logo.png" }],
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "The Mersey Flows - Britpop 90s Band",
+      },
+    ],
     type: "website",
     locale: "en_GB",
   },
@@ -82,8 +82,17 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The Mersey Flows | Britpop 90s Band for Hire",
     description:
-      "Britpop 90s live band from Runcorn, Cheshire — Oasis, Blur, Pulp and more for weddings, events and venues.",
-    images: ["/logo.png"],
+      "Britpop 90s live band from Runcorn, Cheshire. Available for weddings, events and parties.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 600,
+        alt: "The Mersey Flows - Britpop 90s Band",
+      }
+    ],
+    creator: "@TheMerseyFlows",
+    site: "@TheMerseyFlows",
   },
 };
 
@@ -96,46 +105,106 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // JSON-LD structured data for a local music group
+  // Enhanced JSON-LD structured data for a local music group
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "MusicGroup",
     name: "The Mersey Flows",
-    alternateName: ["The Mersey Flows Band"],
-    genre: ["Britpop", "90s", "Rock", "Pop"],
+    alternateName: ["The Mersey Flows Band", "Mersey Flows Britpop Band"],
+    url: "https://merseyflowsband.com",
+    description: "A Britpop 90s live band from Runcorn, Cheshire. Available for weddings, corporate events, and parties.",
+    genre: ["Britpop", "90s", "Rock", "Pop", "Cover Band"],
+    musicGroupMember: [
+      {
+        "@type": "Person",
+        name: "Band Members",
+        jobTitle: "Musicians"
+      }
+    ],
     areaServed: [
       "Runcorn",
-      "Cheshire",
-      "North West England",
+      "Cheshire", 
       "Merseyside",
       "Liverpool",
       "Warrington",
       "Chester",
-      "UK",
+      "Manchester",
+      "North West England",
+      "UK"
     ],
     address: {
       "@type": "PostalAddress",
       addressLocality: "Runcorn",
       addressRegion: "Cheshire",
       addressCountry: "GB",
+      postalCode: "WA7"
     },
-    email: "themerseyflows@gmail.com",
-    telephone: "+44 7454 713523",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+447454713523",
+      contactType: "booking",
+      email: "themerseyflows@gmail.com",
+      availableLanguage: ["English"]
+    },
     sameAs: [
       "https://www.facebook.com/TheMerseyFlows/",
       "https://www.instagram.com/themerseyflowsband/",
+      "https://www.youtube.com/@themerseyflows5485/videos"
     ],
-    priceRange: "££",
-    makesOffer: [
-      {
-        "@type": "Offer",
-        availability: "https://schema.org/InStock",
-        itemOffered: {
-          "@type": "Service",
-          name: "Live Britpop Band for Events",
-        },
+    offers: {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: "Live Britpop Band Performance",
+        description: "2x45 minute sets of Britpop 90s classics with sound and lighting provided",
+        serviceType: "Live Music Entertainment"
       },
-    ],
+      availability: "https://schema.org/InStock",
+      priceRange: "££-£££",
+      areaServed: "North West England and UK-wide"
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Event Services",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Wedding Entertainment",
+            description: "Britpop 90s music for wedding receptions and ceremonies"
+          }
+        },
+        {
+          "@type": "Offer", 
+          itemOffered: {
+            "@type": "Service",
+            name: "Corporate Event Entertainment",
+            description: "Live band for corporate events and company parties"
+          }
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service", 
+            name: "Private Party Entertainment",
+            description: "Britpop band for private parties and celebrations"
+          }
+        }
+      ]
+    },
+    knowsAbout: [
+      "Britpop Music",
+      "90s Music",
+      "Live Performance",
+      "Oasis",
+      "Blur", 
+      "Pulp",
+      "Ocean Colour Scene",
+      "Paul Weller",
+      "Wedding Entertainment",
+      "Event Music"
+    ]
   } as const;
   return (
     <html lang="en" className="dark">

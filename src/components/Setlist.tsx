@@ -30,9 +30,9 @@ export default function Setlist() {
 
   return (
     <section id="setlist" className="mx-auto max-w-6xl px-4 sm:px-6 py-16 text-center">
-      <div className="mb-6">
-        <h2 className="text-2xl font-semibold tracking-tight">Our usual setlist</h2>
-      </div>
+      <header className="mb-6">
+        <h2 className="text-2xl font-semibold tracking-tight">Our Usual Setlist</h2>
+      </header>
       <div className="mx-auto max-w-4xl">
         {/* Mobile: stacked, centered */}
         <ul className="sm:hidden space-y-2 text-zinc-300">
@@ -62,7 +62,9 @@ export default function Setlist() {
             );
           })}
         </div>
-        <p className="mt-6 text-center text-sm text-zinc-400">Other songs available upon request</p>
+        <footer className="mt-6 text-center text-sm text-zinc-400">
+          <p>Other songs available upon request</p>
+        </footer>
       </div>
     </section>
   );

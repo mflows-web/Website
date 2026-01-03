@@ -1,0 +1,49 @@
+# The Mersey Flows Band - robots.txt
+# https://merseyflowsband.com/robots.txt
+
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Block admin and system paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /_error/
+Disallow: /404
+Disallow: /500
+Disallow: /admin/
+Disallow: /.well-known/
+
+# Allow important static assets
+Allow: /_next/static/
+Allow: /_next/image/
+Allow: /logo.png
+Allow: /logo.webp
+Allow: /favicon.ico
+Allow: /apple-touch-icon.png
+
+# Sitemap location
+Sitemap: https://merseyflowsband.com/sitemap.xml
+
+# Crawl delay - be respectful to servers
+Crawl-delay: 1
+
+# Popular search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
