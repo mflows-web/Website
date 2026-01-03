@@ -16,6 +16,9 @@ export default function Hero() {
 
   // Use a more precise mobile detection for landscape mode
   const isMobileView = isMobile || (typeof window !== 'undefined' && window.innerWidth < 768 && window.innerHeight < 600);
+  
+  // Hide intro in very tight landscape mode to prevent logo overlap
+  const shouldShowIntro = isMobileView && !(typeof window !== 'undefined' && window.innerWidth < 768 && window.innerHeight < 500);
 
   return (
     <AccessibilityWrapper>
@@ -25,7 +28,7 @@ export default function Hero() {
             <>
               <MobileHero />
               <HeroDivider />
-              <IntroMobile />
+              {shouldShowIntro && <IntroMobile />}
             </>
           ) : (
             <>

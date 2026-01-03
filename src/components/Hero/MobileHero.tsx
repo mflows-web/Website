@@ -5,7 +5,7 @@ export function MobileHero() {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    <div className="relative overflow-hidden pb-8">
+    <div className="relative overflow-hidden pb-4 landscape:pb-2">
       <picture>
         <source srcSet="/logo.webp" type="image/webp" />
         <img
