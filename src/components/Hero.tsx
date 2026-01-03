@@ -7,7 +7,6 @@ import { DesktopHero } from "./Hero/DesktopHero";
 import { HeroDivider } from "./Hero/HeroDivider";
 import { HeroErrorBoundary, SimplifiedHero } from "./Hero/ErrorBoundary";
 import { AccessibilityWrapper } from "./Hero/AccessibilityComponents";
-import IntroMobile from "@/components/IntroMobile";
 
 export default function Hero() {
   const { isMobile, viewportHeight } = useResponsive(HERO_CONFIG.MOBILE_BREAKPOINT);
@@ -16,9 +15,6 @@ export default function Hero() {
 
   // Use a more precise mobile detection for landscape mode
   const isMobileView = isMobile || (typeof window !== 'undefined' && window.innerWidth < 768 && window.innerHeight < 600);
-  
-  // Completely hide intro in landscape mode to prevent logo overlap
-  const shouldShowIntro = isMobileView && !(typeof window !== 'undefined' && window.innerWidth < 768 && window.innerHeight < 600);
 
   return (
     <AccessibilityWrapper>
@@ -28,7 +24,6 @@ export default function Hero() {
             <>
               <MobileHero />
               <HeroDivider />
-              {shouldShowIntro && <IntroMobile />}
             </>
           ) : (
             <>
