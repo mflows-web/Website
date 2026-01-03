@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import ContactSection from "@/components/ContactSection";
 import SectionDivider from "@/components/SectionDivider";
 import Setlist from "@/components/Setlist";
-import IntroMobile from "@/components/IntroMobile";
 
 // Enhanced metadata for the home page
 export const metadata: Metadata = {
@@ -54,7 +53,6 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <IntroMobile />
       <Setlist />
       <SectionDivider />
       <VideoGrid />
