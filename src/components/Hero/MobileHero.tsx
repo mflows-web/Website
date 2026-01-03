@@ -5,12 +5,12 @@ export function MobileHero() {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    <div className="relative overflow-hidden pb-4 landscape:pb-2">
+    <div className="relative overflow-hidden pb-4 sm:pb-2 lg:pb-0">
       <picture>
         <source srcSet="/logo.webp" type="image/webp" />
         <img
           onLoad={() => setImageLoaded(true)}
-          className={`mx-auto block w-full max-w-[${HERO_CONFIG.LOGO_SIZES.mobile.width}px] h-auto select-none transition-opacity ${HERO_CONFIG.IMAGE_TRANSITION_DURATION} ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`mx-auto block w-full max-w-[${HERO_CONFIG.LOGO_SIZES.mobile.width}px] h-auto select-none transition-opacity ${HERO_CONFIG.IMAGE_TRANSITION_DURATION} ${imageLoaded ? 'opacity-100' : 'opacity-0'} sm:max-w-[280px] landscape:max-w-[240px] landscape:h-auto`}
           src={`/logo.png?${HERO_CONFIG.LOGO_VERSION}`}
           alt="The Mersey Flows - Britpop 90s Band Logo"
           title="The Mersey Flows - Britpop 90s Band"
